@@ -51,8 +51,12 @@ $res = dbSelect($query);
                         <td><?php echo $data['u_name']; ?></td>
                         <td><?php echo $data['u_email']; ?></td>
                         <td><?php echo $data['u_password']; ?></td>
-                        <td><a href="update.php?id=<?=$data['u_id']?>"
-                               class="btn btn-success">Update</a></td>
+                        <td>
+                            <a href="update.php?userId=<?=$data['u_id']?>"
+                               class="btn btn-success">Update</a>
+                            <a href="delete.php?id=<?=$data['u_id']?>"
+                               class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                     <?php
                     }

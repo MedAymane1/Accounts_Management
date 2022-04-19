@@ -8,7 +8,8 @@ function dbProcess($request) {
         return $response;
     }
     catch(Exception $e) {
-        die(header('location: ../index.php?error=Error :' . $e->getMessage()));
+        /* die(header('location: ../index.php?error=Error :' . $e->getMessage())); */
+        die('Erreur : '.$e->getMessage());
     }
 }
 

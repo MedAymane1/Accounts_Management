@@ -1,23 +1,23 @@
 <?php
-include '../database/db_process.php' ;
 
-function validate($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+include 'methods.php' ;
 
-if( isset($_POST['update']) ) {
+$id = validate($_GET['userId']);
+
+if( isset($_POST['update'])) {
     $name = validate($_POST['name']);
     $email = validate($_POST['email']);
     $paswd = validate($_POST['paswd']);
 
+    include '../database/db_process.php' ;
+
     $query = "UPDATE users
-            SET u_name='$name', u_email='$email', u_password='$paswd'
-            WHERE u_id= $id
-            ";
-    dbProcess($query);
+              SET u_name='$name', u_email='$email', u_password='$paswd'
+              WHERE u_id=12";
+
+    $result = dbProcess($query);
+    if($result)
+        header("location: read.php");
 }
 ?>
 
@@ -36,13 +36,7 @@ if( isset($_POST['update']) ) {
     <div class="container">
         <form action="update.php" method="POST">
             <h4 class="display-4 text-center">Update</h4><hr><br>
-
-            <?php if(isset($_GET['error'])) { ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $_GET['error']; ?>
-            </div> 
-            <?php } ?>
-
+            
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text"

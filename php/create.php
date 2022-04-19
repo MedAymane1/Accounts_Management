@@ -5,13 +5,7 @@ session_start();
 if(isset($_POST['create'])) {
 
     include '../database/db_process.php' ;
-
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+    include 'methods.php' ;
 
     $_SESSION['name'] = $name = validate($_POST['name']);
     $_SESSION['email'] = $email = validate($_POST['email']);
@@ -29,7 +23,7 @@ if(isset($_POST['create'])) {
     else {
         $query = "INSERT INTO users(u_name, u_email, u_password)
                   VALUES ('$name', '$email', '$paswd')" ;
-        dbProcess($query); 
+        dbProcess($query);
         header("location: read.php?success=Successfully Created");
     }
 }
