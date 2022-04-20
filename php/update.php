@@ -13,7 +13,7 @@ if( isset($_POST['update'])) {
 
     $query = "UPDATE users
               SET u_name='$name', u_email='$email', u_password='$paswd'
-              WHERE u_id=12";
+              WHERE u_id=$id";
 
     $result = dbProcess($query);
     if($result)
